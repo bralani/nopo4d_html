@@ -62,8 +62,7 @@
   <title>NoPo4D: Feed-Forward Dynamic Gaussians from Unposed Multi-View Videos</title>
   
   <!-- Favicon and App Icons -->
-  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
-  <link rel="apple-touch-icon" href="static/images/favicon.ico">
+  <link rel="icon" href="data:,">
   
   <!-- Critical CSS - Load synchronously -->
   <link rel="stylesheet" href="static/css/bulma.min.css">
@@ -157,52 +156,55 @@
 
   <main id="main-content">
   <section class="hero">
-    <div class="hero-body">
+    <div class="hero-body" style="padding: 2rem 1.5rem 1rem;">
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">No Pose, No Problem in 4D: Feed-Forward Dynamic Gaussians from Unposed Multi-View Videos</h1>
+            <h1 class="title is-1 publication-title" style="line-height: 1.2;">
+              No Pose, No Problem in 4D:<br>
+              <span style="font-size: 0.65em; line-height: 1.3; display: inline-block;">Feed-Forward Dynamic Gaussians from<br>Unposed Multi-View Videos</span>
+            </h1>
             <div class="is-size-5 publication-authors">
-              <span class="author-block">Matteo Balice<sup>1</sup>,</span>
-              <span class="author-block">Yanik Künzi<sup>2</sup>,</span>
-              <span class="author-block">Chenyangguang Zhang<sup>2</sup>,</span>
-              <span class="author-block">Matteo Matteucci<sup>1</sup>,</span>
-              <span class="author-block">Marc Pollefeys<sup>2</sup>,</span>
-              <span class="author-block">Sungwhan Hong<sup>2</sup></span>
+              <span class="author-block"><a href="https://bralani.github.io/" target="_blank">Matteo Balice</a><sup>1</sup>,</span>
+              <span class="author-block"><a href="https://www.linkedin.com/in/yanik-k%C3%BCnzi-6042753b3/" target="_blank">Yanik Künzi</a><sup>2</sup>,</span>
+              <span class="author-block"><a href="https://zhangcyg.github.io/" target="_blank">Chenyangguang Zhang</a><sup>2</sup>,</span>
+              <span class="author-block"><a href="https://www.deib.polimi.it/eng/people/details/267262" target="_blank">Matteo Matteucci</a><sup>1</sup>,</span>
+              <span class="author-block"><a href="https://people.inf.ethz.ch/pomarc/" target="_blank">Marc Pollefeys</a><sup>2</sup>,</span>
+              <span class="author-block"><a href="https://sunghwanhong.github.io/" target="_blank">Sungwhan Hong</a><sup>2</sup></span>
             </div>
 
-                  <div class="is-size-5 publication-authors">
+                  <div class="is-size-5 publication-authors" style="margin-bottom:0.75rem;">
                     <span class="author-block"><sup>1</sup>Politecnico di Milano &nbsp;&nbsp; <sup>2</sup>ETH Zürich</span>
                   </div>
 
                   <div class="column has-text-centered">
                     <div class="publication-links">
                       <span class="link-block">
-                        <a href="#" class="external-link button is-normal is-rounded is-dark">
+                        <a href="https://arxiv.org/abs/XXXX.XXXXX" class="external-link button is-normal is-rounded is-dark">
                         <span class="icon">
-                          <i class="fas fa-file-pdf"></i>
+                          <i class="ai ai-arxiv"></i>
                         </span>
-                        <span>Paper (coming soon)</span>
+                        <span>arXiv</span>
                       </a>
                     </span>
 
+                    <span class="link-block">
+                      <a href="https://github.com/bralani/NoPo4D" class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="fab fa-github"></i>
+                      </span>
+                      <span>Code</span>
+                    </a>
+                  </span>
+
                   <span class="link-block">
-                    <a href="#" class="external-link button is-normal is-rounded is-dark">
+                    <a href="https://huggingface.co/bralani01/nopo4d" class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
-                      <i class="fab fa-github"></i>
+                      <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="HuggingFace" style="height:1em;">
                     </span>
-                    <span>Code (coming soon)</span>
+                    <span>Weights</span>
                   </a>
                 </span>
-
-                <span class="link-block">
-                  <a href="#" class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                    <i class="ai ai-arxiv"></i>
-                  </span>
-                  <span>arXiv (coming soon)</span>
-                </a>
-              </span>
             </div>
           </div>
         </div>
@@ -211,68 +213,76 @@
   </div>
 </section>
 
-
-<!-- Teaser video-->
-<section class="hero teaser">
+<!-- TL;DR + Video (grey background) -->
+<section class="section hero is-light" style="padding: 2rem 1.5rem;">
   <div class="container is-max-desktop">
-    <div class="hero-body">
-      <video poster="" id="tree" autoplay controls muted loop height="100%" preload="metadata">
-        <source src="static/videos/video.mp4" type="video/mp4">
-      </video>
-      <h2 class="subtitle has-text-centered">
-        Given C uncalibrated, time-synchronized video streams, NoPo4D reconstructs dynamic 3D scenes in a single feed-forward pass — no camera poses, no per-scene optimization required.
-      </h2>
-    </div>
-  </div>
-</section>
-<!-- End teaser video -->
 
-<!-- Paper abstract -->
-<section class="section hero is-light">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
+    <div class="columns is-centered" style="margin-bottom:1rem;">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <p>
-            Recent feed-forward 3D gaussian splatting methods have made dramatic progress on individual aspects of 3D scene reconstruction, but no existing method jointly addresses dynamic content, multi-view input, and unknown camera poses in a single feed-forward pass. Methods that handle dynamics either require accurate camera poses or accept only monocular input; pose-free multi-view methods address only static scenes; and per-scene optimization methods bridge some of these gaps but at minutes-to-hours cost per scene. We introduce <b>NoPo4D</b>, the first feed-forward system that addresses this empty quadrant. Building on a pretrained geometry backbone and recent 4D Gaussian frameworks, NoPo4D introduces a velocity decomposition that splits Gaussian motion into per-pixel image-plane shifts and depth changes, allowing direct supervision from pseudo ground-truth optical flow on the 2D component. This sidesteps both the differentiable rendering that couples prior posed methods to pose accuracy and the 3D motion ground truth that prior pose-free methods require. The system is rounded out by a bidirectional motion encoder for cross-view and cross-frame feature aggregation, and view-dependent opacity that mitigates cross-view and cross-timestep Gaussian misalignments. On four multi-view dynamic benchmarks, NoPo4D consistently outperforms prior feed-forward baselines, and with an optional post-optimization stage surpasses per-scene optimization methods, while running orders of magnitude faster. Code and the pretrained weights will be made publicly available.
+        <div style="background: linear-gradient(135deg, #eff6ff 0%, #f0ebff 100%); border-radius:14px; box-shadow:0 2px 12px rgba(0,0,0,0.18); padding:0.9rem 1.5rem; text-align:center; border: 1px solid #c7d2fe;">
+          <p style="font-size: 0.92rem; line-height: 1.75; margin:0;">
+            <strong>TL;DR:</strong> NoPo4D is the <strong>first model</strong> to jointly reconstruct <strong>moving scenes</strong> from <strong>multiple uncalibrated video streams</strong> in a <strong>single step</strong>, orders of magnitude faster than traditional optimization-based approaches.
           </p>
         </div>
       </div>
     </div>
+
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <video poster="" autoplay controls muted loop width="100%" preload="metadata" style="border-radius:8px;">
+          <source src="static/videos/video.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+
   </div>
 </section>
-<!-- End paper abstract -->
+<!-- End TL;DR + Video -->
 
-
-<!-- Method / Architecture -->
+<!-- Abstract + Architecture -->
 <section class="section">
   <div class="container is-max-desktop">
+
     <div class="columns is-centered has-text-centered">
-      <div class="column is-full">
-        <h2 class="title is-3">Method</h2>
-        <div class="content has-text-justified">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Overview</h2>
+        <div class="content" style="font-size:0.92rem; color:#374151; text-align:left;">
           <p>
-            NoPo4D builds on a pretrained depth backbone (Depth Anything 3) extended with cross-view attention layers. For each input frame, per-pixel Gaussians are unprojected from predicted depth maps. A <strong>bidirectional motion encoder</strong> performs joint self-attention across all cameras and consecutive frames to predict per-Gaussian velocities. Velocities are parameterised as 2D image-plane shifts plus a depth displacement, enabling direct supervision from pseudo-GT optical flow without requiring camera poses or 3D motion ground truth. <strong>View-dependent opacity</strong> via spherical harmonics compensates for cross-view geometric misalignments inherent in pose-free reconstruction.
+            Recent feed-forward 3D Gaussian splatting methods have made dramatic progress, but no existing approach jointly addresses dynamic scenes, multi-view input, and unknown camera poses in a single pass. Methods that handle dynamics require accurate camera poses or monocular input; pose-free methods address only static scenes; and per-scene optimization bridges some gaps but at a cost of minutes to hours per scene.
+          </p>
+          <p>
+            We introduce <strong>NoPo4D</strong>, the first <strong>feed-forward system</strong> that addresses this gap. Built on a pretrained geometry backbone, NoPo4D introduces a velocity decomposition that splits Gaussian motion into per-pixel image-plane shifts and depth changes, enabling direct supervision from pseudo ground-truth optical flow — without requiring camera poses or 3D motion ground truth. A bidirectional motion encoder aggregates cross-view and cross-frame features, while view-dependent opacity mitigates geometric misalignments inherent to pose-free reconstruction.
+          </p>
+          <p>
+            On four multi-view dynamic benchmarks, <strong>NoPo4D</strong> consistently outperforms prior feed-forward baselines, and with an optional post-optimization stage surpasses per-scene optimization methods while running <strong>orders of magnitude faster</strong>.
           </p>
         </div>
-        <figure>
-          <img src="static/images/architecture.svg" alt="NoPo4D architecture overview" style="width:100%; max-width:900px;">
-          <figcaption class="subtitle has-text-centered" style="margin-top:0.75rem;">
-            <strong>Architecture overview.</strong> Feature tokens from the depth backbone are processed by a bidirectional motion encoder that aggregates cross-view and cross-frame information. Each pixel yields a 4D Gaussian with static attributes and a linear velocity predicted via the decomposed motion head.
-          </figcaption>
-        </figure>
       </div>
     </div>
+
+    <div class="columns is-centered" style="margin-top:2rem;">
+      <div class="column is-four-fifths">
+        <div style="background:#fff; border-radius:14px; box-shadow:0 2px 12px rgba(0,0,0,0.18); padding:1.5rem; border:1px solid #e0e7ff;">
+          <figure style="margin:0;">
+            <img src="static/images/architecture.svg" alt="NoPo4D architecture overview" style="width:85%; max-width:750px; display:block; margin:0 auto;">
+            <figcaption style="margin-top:1rem; max-width:750px; margin-left:auto; margin-right:auto; font-size:0.82rem; color:#374151; text-align:center; line-height:1.4;">
+              <strong>Architecture overview.</strong> Given <em>C</em> streams of time-synchronized video, DA3 first extracts multi-view features through alternating within-view and cross-view attention layers. Pretrained, frozen depth and camera heads recover per-frame geometry, unprojected into Gaussian means <strong>μ</strong>. Two trainable heads then decode the remaining attributes: a Gaussian head predicts static parameters (<strong>R</strong>, <strong>s</strong>, α, <strong>c</strong>), while a bidirectional motion branch processes consecutive-frame features to produce forward and backward linear and angular velocities (<strong>v</strong><sup>±</sup>, <strong>ω</strong><sup>±</sup>), a per-pixel motion gate ρ, and the temporal covariance σ<sub>g</sub>. All outputs are composed into a 4D Gaussian representation and rendered via differentiable rasterization.
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
-<!-- End Method -->
+<!-- End Abstract + Architecture -->
 
 
 <!-- Image carousel -->
-<section class="hero is-small">
+<section class="hero is-small is-light">
   <div class="hero-body">
     <div class="container">
+      <h2 class="title is-3 has-text-centered" style="margin-bottom:1.5rem;">Results</h2>
       <div id="results-carousel" class="carousel results-carousel">
        <div class="item">
         <img src="static/images/carousel1.jpg" alt="NoPo4D qualitative results on ExoRecon" loading="lazy"/>
@@ -311,15 +321,12 @@
       <div class="column is-full">
         <h2 class="title is-3">Interactive Viewer</h2>
         <div class="content">
-          <p>Explore a 4D Gaussian Splatting scene interactively.
-             <strong>Click and drag</strong> to orbit &middot;
-             <strong>scroll</strong> to zoom &middot;
-             <strong>drag a <code>.splatv</code> file</strong> to load your own scene.</p>
+          <p style="font-size:0.88rem; color:#64748b;">Click and drag to orbit &middot; scroll to zoom &middot; click a scene below to switch.</p>
         </div>
         <iframe
           src="./demo/"
           width="100%"
-          height="600"
+          height="720"
           style="border:none; border-radius:8px; box-shadow:0 4px 24px rgba(0,0,0,0.15);"
           allowfullscreen
           title="4D Gaussian Splatting Interactive Viewer">
@@ -333,18 +340,15 @@
 
 
 
-
-
-
 <!-- Qualitative results -->
-<section class="section">
+<section class="section hero is-light">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-full">
         <h2 class="title is-3">Qualitative Results</h2>
         <figure>
           <img src="static/images/vis.png" alt="Qualitative comparison of NoPo4D against baselines" style="width:100%;">
-          <figcaption class="subtitle has-text-centered" style="margin-top:0.75rem;">
+          <figcaption class="subtitle has-text-centered" style="margin-top:0.75rem; font-size:0.82rem;">
             <strong>Qualitative comparison</strong> on ExoRecon and Kubric against MoVieS, DGGT, and NeoVerse. NoPo4D produces sharper, more complete reconstructions with significantly fewer artifacts.
           </figcaption>
         </figure>
@@ -354,45 +358,34 @@
 </section>
 <!-- End qualitative results -->
 
-<!--
-BibTex citation
-  <section class="section" id="BibTeX">
-    <div class="container is-max-desktop content">
-      <div class="bibtex-header">
-        <h2 class="title">BibTeX</h2>
-        <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
-          <i class="fas fa-copy"></i>
-          <span class="copy-text">Copy</span>
-        </button>
-      </div>
-      <pre id="bibtex-code"><code>@inproceedings{balice2026nopo4d,
+<!-- BibTeX citation -->
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <div class="bibtex-header">
+      <h2 class="title">BibTeX</h2>
+      <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
+        <i class="fas fa-copy"></i>
+        <span class="copy-text">Copy</span>
+      </button>
+    </div>
+    <pre id="bibtex-code"><code>@article{balice2026nopo4d,
   title={No Pose, No Problem in 4D: Feed-Forward Dynamic Gaussians from Unposed Multi-View Videos},
   author={Balice, Matteo and K{\"u}nzi, Yanik and Zhang, Chenyangguang and Matteucci, Matteo and Pollefeys, Marc and Hong, Sungwhan},
-  booktitle={Advances in Neural Information Processing Systems},
+  journal={arXiv preprint arXiv:XXXX.XXXXX},
   year={2026}
 }</code></pre>
-    </div>
-</section>
-End BibTex citation
--->
-
-
-  <footer class="footer">
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content">
-
-          <p>
-            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
-            You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
-
-        </div>
-      </div>
-    </div>
   </div>
+</section>
+<!-- End BibTeX citation -->
+
+
+  <footer class="footer" style="padding: 1.5rem;">
+    <div class="content has-text-centered">
+      <p style="font-size: 0.78rem; color: #aaa;">
+        This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank" style="color: #3b82f6;">Creative Commons Attribution-ShareAlike 4.0 International License</a>.<br>
+        This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank" style="color: #3b82f6;">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank" style="color: #3b82f6;">Nerfies</a> project page.
+      </p>
+    </div>
 </footer>
 
 <!-- Statcounter tracking code -->

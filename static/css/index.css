@@ -28,6 +28,24 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #3b82f6, #7c3aed);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #2563eb, #6d28d9);
+}
+
 body {
   font-family: 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
   color: var(--text-primary);
@@ -188,7 +206,7 @@ body {
     height: 2px;
     bottom: -2px;
     left: 0;
-    background: var(--gradient-accent);
+    background: linear-gradient(135deg, #3b82f6 0%, #7c3aed 100%);
     transition: var(--transition);
 }
 
@@ -326,7 +344,7 @@ body {
   transform: translateX(-50%);
   width: 60px;
   height: 3px;
-  background: var(--gradient-accent);
+  background: linear-gradient(135deg, #3b82f6 0%, #7c3aed 100%);
   border-radius: 2px;
 }
 

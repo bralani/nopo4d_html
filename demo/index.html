@@ -4,21 +4,36 @@
         <meta charset="UTF-8" />
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>gsplat.js - Viewer Demo</title>
-      <script type="module" crossorigin src="./assets/index-01a79af8.js"></script>
-      <link rel="stylesheet" href="./assets/index-c2c82e17.css">
+        <title>4DGS Interactive Viewer</title>
+      <script type="module" crossorigin src="./assets/index-2cd09412.js"></script>
+      <link rel="stylesheet" href="./assets/index-a101552f.css">
     </head>
     <body>
-        <div id="progress-container">
-            <dialog open id="progress-dialog">
-                <p>
-                    <label for="progress-indicator">Loading scene...</label>
-                </p>
-                <progress max="100" id="progress-indicator"></progress>
-            </dialog>
+        <div id="viewer">
+            <div id="loading-overlay">
+                <div id="loading-box">
+                    <p>Loading scene...</p>
+                    <progress max="100" id="progress-indicator"></progress>
+                </div>
+            </div>
+            <canvas id="canvas"></canvas>
         </div>
 
-        <canvas id="canvas"></canvas>
+        <div id="scene-picker">
+            <div class="scene-card active" data-index="0">
+                <div class="scene-thumb thumb-flame"></div>
+                <span class="scene-name">Flame</span>
+            </div>
+            <div class="scene-card" data-index="1">
+                <div class="scene-thumb thumb-birthday"></div>
+                <span class="scene-name">Birthday</span>
+            </div>
+            <div class="scene-card" data-index="2">
+                <div class="scene-thumb thumb-sear"></div>
+                <span class="scene-name">Sear steak</span>
+            </div>
+        </div>
+
         
     </body>
 </html>
