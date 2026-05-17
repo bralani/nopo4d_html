@@ -85,6 +85,11 @@
   <!-- Fonts - Optimized loading -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
+
+  <!-- Image comparison slider -->
+  <script defer src="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/index.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/styles.css"/>
+
   <!-- Defer non-critical JavaScript -->
   <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
@@ -279,6 +284,7 @@
 
 
 <!-- Image carousel -->
+<!--
 <section class="hero is-small is-light">
   <div class="hero-body">
     <div class="container">
@@ -287,7 +293,7 @@
        <div class="item">
         <img src="static/images/carousel1.jpg" alt="NoPo4D qualitative results on ExoRecon" loading="lazy"/>
         <h2 class="subtitle has-text-centered">
-          Qualitative results on ExoRecon (in-distribution). NoPo4D achieves 29.15 PSNR feed-forward, outperforming all prior baselines.
+          Qualitative results on ExoRecon. NoPo4D achieves 29.15 PSNR feed-forward, outperforming all prior baselines.
         </h2>
       </div>
       <div class="item">
@@ -312,9 +318,11 @@
 </div>
 </div>
 </section>
+-->
 <!-- End image carousel -->
 
 <!-- Interactive Viewer -->
+<!--
 <section class="section">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
@@ -335,28 +343,188 @@
     </div>
   </div>
 </section>
+-->
 <!-- End interactive viewer -->
 
 
 
 
 <!-- Qualitative results -->
-<section class="section hero is-light">
+<section id="qual-section" class="section hero is-light">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-full">
-        <h2 class="title is-3">Qualitative Results</h2>
-        <figure>
-          <img src="static/images/vis.png" alt="Qualitative comparison of NoPo4D against baselines" style="width:100%;">
-          <figcaption class="subtitle has-text-centered" style="margin-top:0.75rem; font-size:0.82rem;">
-            <strong>Qualitative comparison</strong> on ExoRecon and Kubric against MoVieS, DGGT, and NeoVerse. NoPo4D produces sharper, more complete reconstructions with significantly fewer artifacts.
-          </figcaption>
-        </figure>
+        <h2 class="title is-3">Comparison</h2>
+
+        <!-- Slider with arrow navigation -->
+        <div style="display:flex; align-items:center; gap:0.75rem;">
+          <button id="qual-prev" class="qual-arrow-btn" aria-label="Previous scene">&#8592;</button>
+          <div style="flex:1; min-width:0; overflow:hidden;">
+            <div id="qual-slider-wrapper">
+              <div class="qual-sliders-row">
+
+                <div class="qual-slider-col">
+                  <div class="qual-slider-box">
+                    <img-comparison-slider hover>
+                      <div slot="first" style="position:relative; line-height:0;">
+                        <img data-role="nopo4d" src="static/images/qual/exorecon_nopo4d.png" width="448" height="448" style="width:100%; display:block;" alt="NoPo4D (Ours)" />
+                        <span class="qual-label" style="left:0.75rem;">NoPo4D (Ours)</span>
+                      </div>
+                      <div slot="second" style="position:relative; line-height:0;">
+                        <img data-role="baseline" data-baseline="neoverse" src="static/images/qual/exorecon_neoverse.png" width="448" height="448" style="width:100%; display:block;" alt="NeoVerse" />
+                        <span class="qual-label" style="right:0.75rem;">NeoVerse</span>
+                      </div>
+                    </img-comparison-slider>
+                  </div>
+                </div>
+
+                <div class="qual-slider-col">
+                  <div class="qual-slider-box">
+                    <img-comparison-slider hover>
+                      <div slot="first" style="position:relative; line-height:0;">
+                        <img data-role="nopo4d" src="static/images/qual/exorecon_nopo4d.png" width="448" height="448" style="width:100%; display:block;" alt="NoPo4D (Ours)" />
+                        <span class="qual-label" style="left:0.75rem;">NoPo4D (Ours)</span>
+                      </div>
+                      <div slot="second" style="position:relative; line-height:0;">
+                        <img data-role="baseline" data-baseline="movies" src="static/images/qual/exorecon_movies.png" width="448" height="448" style="width:100%; display:block;" alt="MoVieS" />
+                        <span class="qual-label" style="right:0.75rem;">MoVieS</span>
+                      </div>
+                    </img-comparison-slider>
+                  </div>
+                </div>
+
+                <div class="qual-slider-col">
+                  <div class="qual-slider-box">
+                    <img-comparison-slider hover>
+                      <div slot="first" style="position:relative; line-height:0;">
+                        <img data-role="nopo4d" src="static/images/qual/exorecon_nopo4d.png" width="448" height="448" style="width:100%; display:block;" alt="NoPo4D (Ours)" />
+                        <span class="qual-label" style="left:0.75rem;">NoPo4D (Ours)</span>
+                      </div>
+                      <div slot="second" style="position:relative; line-height:0;">
+                        <img data-role="baseline" data-baseline="dggt" src="static/images/qual/exorecon_dggt.png" width="448" height="448" style="width:100%; display:block;" alt="DGGT" />
+                        <span class="qual-label" style="right:0.75rem;">DGGT</span>
+                      </div>
+                    </img-comparison-slider>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <button id="qual-next" class="qual-arrow-btn" aria-label="Next scene">&#8594;</button>
+        </div>
+
+        <!-- Scene indicator dots -->
+        <div style="display:flex; justify-content:center; gap:0.4rem; margin-top:0.75rem;">
+          <span class="qual-dot active" data-index="0"></span>
+          <span class="qual-dot" data-index="1"></span>
+          <span class="qual-dot" data-index="2"></span>
+          <span class="qual-dot" data-index="3"></span>
+        </div>
+
+
+        <p id="qual-caption" class="subtitle has-text-centered" style="margin-top:0.75rem; font-size:0.82rem;">
+          <strong>ExoRecon.</strong> NoPo4D achieves 29.15 PSNR feed-forward, outperforming all prior baselines.        </p>
       </div>
     </div>
   </div>
 </section>
 <!-- End qualitative results -->
+
+<script>
+(function () {
+  const datasets = ['exorecon', 'kubric', 'n3dv', 'immersive'];
+  const captions = {
+    exorecon:  '<strong>ExoRecon.</strong> NoPo4D reconstructs dynamic scenes with sharp details and accurate structure, clearly outperforming all prior baselines.',
+    kubric:    '<strong>Kubric (synthetic benchmark).</strong> On this challenging synthetic dataset with complex multi-object dynamics, NoPo4D faithfully reconstructs object geometry and appearance.',
+    n3dv:      '<strong>N3DV.</strong> NoPo4D synthesizes novel views at both moderate and extreme angular distances from the context input cameras, maintaining visual coherence even when the target viewpoint is far from any observed input.',
+    immersive: '<strong>Immersive Light Field.</strong> NoPo4D generalizes to real-world dynamic scenes never seen during training, demonstrating strong zero-shot performance without any scene-specific fine-tuning.',
+  };
+  const images = {
+    exorecon:  { movies: 'static/images/qual/exorecon_movies.png', dggt: 'static/images/qual/exorecon_dggt.png', neoverse: 'static/images/qual/exorecon_neoverse.png', nopo4d: 'static/images/qual/exorecon_nopo4d.png' },
+    kubric:    { movies: 'static/images/qual/kubric_movies.png', dggt: 'static/images/qual/kubric_dggt.png', neoverse: 'static/images/qual/kubric_neoverse.png', nopo4d: 'static/images/qual/kubric_nopo4d.png' },
+    n3dv:      { movies: 'static/images/qual/n3dv_movies.png', dggt: 'static/images/qual/n3dv_dggt.png', neoverse: 'static/images/qual/n3dv_neoverse.png', nopo4d: 'static/images/qual/n3dv_nopo4d.png' },
+    immersive: { movies: 'static/images/qual/immersive_movies.png', dggt: 'static/images/qual/immersive_dggt.png', neoverse: 'static/images/qual/immersive_neoverse.png', nopo4d: 'static/images/qual/immersive_nopo4d.png' },
+  };
+  let currentIndex = 0;
+  let animating = false;
+
+  /* ── Preload all images ── */
+  Object.values(images).forEach(scene =>
+    Object.values(scene).forEach(src => { const i = new Image(); i.src = src; })
+  );
+
+  /* ── Lock slider box heights to their own width (prevents web component from resizing them) ── */
+  const sliderBoxes = Array.from(document.querySelectorAll('.qual-slider-box'));
+
+  function lockBoxHeights() {
+    sliderBoxes.forEach(box => {
+      const w = box.getBoundingClientRect().width;
+      if (w > 0) box.style.height = w + 'px';
+    });
+  }
+
+  const sliderRow = document.querySelector('.qual-sliders-row');
+  if (sliderRow && window.ResizeObserver) {
+    new ResizeObserver(lockBoxHeights).observe(sliderRow);
+  } else {
+    window.addEventListener('resize', lockBoxHeights);
+  }
+
+  function applyImages() {
+    const dataset = datasets[currentIndex];
+    document.querySelectorAll('img[data-role="nopo4d"]').forEach(img => {
+      img.src = images[dataset]['nopo4d'];
+    });
+    document.querySelectorAll('img[data-role="baseline"]').forEach(img => {
+      img.src = images[dataset][img.dataset.baseline];
+    });
+    document.getElementById('qual-caption').innerHTML = captions[dataset];
+    document.querySelectorAll('.qual-dot').forEach((d, i) => d.classList.toggle('active', i === currentIndex));
+    requestAnimationFrame(lockBoxHeights);
+  }
+
+  function slideToScene(direction) {
+    if (animating) return;
+    animating = true;
+    const wrapper = document.getElementById('qual-slider-wrapper');
+    const outClass = direction > 0 ? 'slide-out-left' : 'slide-out-right';
+    const inClass  = direction > 0 ? 'slide-in-right' : 'slide-in-left';
+    wrapper.classList.add(outClass);
+    setTimeout(() => {
+      wrapper.classList.remove(outClass);
+      wrapper.classList.add(inClass);
+      applyImages();
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        wrapper.classList.remove(inClass);
+        animating = false;
+      }));
+    }, 220);
+  }
+
+  document.getElementById('qual-prev').addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + datasets.length) % datasets.length;
+    slideToScene(-1);
+  });
+  document.getElementById('qual-next').addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % datasets.length;
+    slideToScene(1);
+  });
+  document.querySelectorAll('.qual-dot').forEach(dot => {
+    dot.addEventListener('click', () => {
+      const newIndex = parseInt(dot.dataset.index);
+      if (newIndex === currentIndex) return;
+      const dir = newIndex > currentIndex ? 1 : -1;
+      currentIndex = newIndex;
+      slideToScene(dir);
+    });
+  });
+
+  applyImages();
+  lockBoxHeights();
+
+})();
+</script>
 
 <!-- BibTeX citation -->
 <section class="section" id="BibTeX">
