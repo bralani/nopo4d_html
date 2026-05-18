@@ -226,7 +226,7 @@
       <div class="column is-four-fifths">
         <div style="background: linear-gradient(135deg, #eff6ff 0%, #f0ebff 100%); border-radius:14px; box-shadow:0 2px 12px rgba(0,0,0,0.18); padding:0.9rem 1.5rem; text-align:center; border: 1px solid #c7d2fe;">
           <p style="font-size: 0.92rem; line-height: 1.75; margin:0;">
-            <strong>TL;DR:</strong> NoPo4D is the <strong>first model</strong> to jointly reconstruct <strong>moving scenes</strong> from <strong>multiple uncalibrated video streams</strong> in a <strong>single step</strong>, orders of magnitude faster than traditional optimization-based approaches.
+            <strong>TL;DR:</strong> NoPo4D jointly reconstructs <strong>moving scenes</strong> from <strong>multiple uncalibrated video streams</strong> in a <strong>single step</strong>, orders of magnitude faster than traditional optimization-based approaches.
           </p>
         </div>
       </div>
@@ -235,7 +235,7 @@
     <div class="columns is-centered">
       <div class="column is-four-fifths">
         <video poster="" autoplay controls muted loop width="100%" preload="metadata" style="border-radius:8px;">
-          <source src="static/videos/video.mp4" type="video/mp4">
+          <source src="static/videos/teaser.mp4" type="video/mp4">
         </video>
       </div>
     </div>
@@ -481,6 +481,7 @@
     });
     document.getElementById('qual-caption').innerHTML = captions[dataset];
     document.querySelectorAll('.qual-dot').forEach((d, i) => d.classList.toggle('active', i === currentIndex));
+    document.querySelectorAll('img-comparison-slider').forEach(s => { s.setAttribute('value', '50'); });
     requestAnimationFrame(lockBoxHeights);
   }
 
