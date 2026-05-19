@@ -390,45 +390,45 @@
                 <div class="qual-slider-col">
                   <div class="qual-slider-box">
                     <img-comparison-slider hover>
-                      <div slot="first" style="position:relative; line-height:0;">
+                      <div slot="first" style="line-height:0;">
                         <img data-role="nopo4d" src="static/images/qual/exorecon_nopo4d.png" width="448" height="448" style="width:100%; display:block;" alt="NoPo4D (Ours)" />
-                        <span class="qual-label" style="left:0.75rem;">NoPo4D (Ours)</span>
                       </div>
-                      <div slot="second" style="position:relative; line-height:0;">
+                      <div slot="second" style="line-height:0;">
                         <img data-role="baseline" data-baseline="neoverse" src="static/images/qual/exorecon_neoverse.png" width="448" height="448" style="width:100%; display:block;" alt="NeoVerse" />
-                        <span class="qual-label" style="right:0.75rem;">NeoVerse</span>
                       </div>
                     </img-comparison-slider>
+                    <div class="qual-label-mask" data-side="left"><span class="qual-label" style="left:0.75rem;">NoPo4D (Ours)</span></div>
+                    <div class="qual-label-mask" data-side="right"><span class="qual-label" style="right:0.75rem;">NeoVerse</span></div>
                   </div>
                 </div>
 
                 <div class="qual-slider-col">
                   <div class="qual-slider-box">
                     <img-comparison-slider hover>
-                      <div slot="first" style="position:relative; line-height:0;">
+                      <div slot="first" style="line-height:0;">
                         <img data-role="nopo4d" src="static/images/qual/exorecon_nopo4d.png" width="448" height="448" style="width:100%; display:block;" alt="NoPo4D (Ours)" />
-                        <span class="qual-label" style="left:0.75rem;">NoPo4D (Ours)</span>
                       </div>
-                      <div slot="second" style="position:relative; line-height:0;">
+                      <div slot="second" style="line-height:0;">
                         <img data-role="baseline" data-baseline="movies" src="static/images/qual/exorecon_movies.png" width="448" height="448" style="width:100%; display:block;" alt="MoVieS" />
-                        <span class="qual-label" style="right:0.75rem;">MoVieS</span>
                       </div>
                     </img-comparison-slider>
+                    <div class="qual-label-mask" data-side="left"><span class="qual-label" style="left:0.75rem;">NoPo4D (Ours)</span></div>
+                    <div class="qual-label-mask" data-side="right"><span class="qual-label" style="right:0.75rem;">MoVieS</span></div>
                   </div>
                 </div>
 
                 <div class="qual-slider-col">
                   <div class="qual-slider-box">
                     <img-comparison-slider hover>
-                      <div slot="first" style="position:relative; line-height:0;">
+                      <div slot="first" style="line-height:0;">
                         <img data-role="nopo4d" src="static/images/qual/exorecon_nopo4d.png" width="448" height="448" style="width:100%; display:block;" alt="NoPo4D (Ours)" />
-                        <span class="qual-label" style="left:0.75rem;">NoPo4D (Ours)</span>
                       </div>
-                      <div slot="second" style="position:relative; line-height:0;">
+                      <div slot="second" style="line-height:0;">
                         <img data-role="baseline" data-baseline="dggt" src="static/images/qual/exorecon_dggt.png" width="448" height="448" style="width:100%; display:block;" alt="DGGT" />
-                        <span class="qual-label" style="right:0.75rem;">DGGT</span>
                       </div>
                     </img-comparison-slider>
+                    <div class="qual-label-mask" data-side="left"><span class="qual-label" style="left:0.75rem;">NoPo4D (Ours)</span></div>
+                    <div class="qual-label-mask" data-side="right"><span class="qual-label" style="right:0.75rem;">DGGT</span></div>
                   </div>
                 </div>
 
@@ -478,6 +478,20 @@
     Object.values(scene).forEach(src => { const i = new Image(); i.src = src; })
   );
 
+  /* ── Sync label masks with each slider's handle position ── */
+  document.querySelectorAll('.qual-slider-box').forEach(box => {
+    const slider = box.querySelector('img-comparison-slider');
+    if (!slider) return;
+    const leftMask  = box.querySelector('.qual-label-mask[data-side="left"]');
+    const rightMask = box.querySelector('.qual-label-mask[data-side="right"]');
+    function syncMasks() {
+      const val = parseFloat(slider.value) || 50;
+      if (leftMask)  leftMask.style.clipPath  = `inset(0 ${100 - val}% 0 0)`;
+      if (rightMask) rightMask.style.clipPath = `inset(0 0 0 ${val}%)`;
+    }
+    slider.addEventListener('slide', syncMasks);
+  });
+
   /* ── Lock slider box heights to their own width (prevents web component from resizing them) ── */
   const sliderBoxes = Array.from(document.querySelectorAll('.qual-slider-box'));
 
@@ -506,6 +520,8 @@
     document.getElementById('qual-caption').innerHTML = captions[dataset];
     document.querySelectorAll('.qual-dot[data-index]').forEach((d, i) => d.classList.toggle('active', i === currentIndex));
     document.querySelectorAll('img-comparison-slider').forEach(s => { s.setAttribute('value', '50'); });
+    document.querySelectorAll('.qual-label-mask[data-side="left"]').forEach(m => { m.style.clipPath = 'inset(0 50% 0 0)'; });
+    document.querySelectorAll('.qual-label-mask[data-side="right"]').forEach(m => { m.style.clipPath = 'inset(0 0 0 50%)'; });
     requestAnimationFrame(lockBoxHeights);
   }
 

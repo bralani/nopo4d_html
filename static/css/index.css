@@ -798,6 +798,15 @@ img-comparison-slider {
 #qual-slider-wrapper.slide-in-right { opacity: 0; transform: translateX(-48px); transition: none; }
 
 /* Comparison slider image labels */
+.qual-label-mask {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+}
+.qual-label-mask[data-side="left"]  { clip-path: inset(0 50% 0 0); }
+.qual-label-mask[data-side="right"] { clip-path: inset(0 0 0 50%); }
+
 .qual-label {
   position: absolute;
   bottom: 0.5rem;
