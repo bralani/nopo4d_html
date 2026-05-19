@@ -280,43 +280,74 @@
 <!-- End Abstract + Architecture -->
 
 
-<!-- Image carousel -->
-<!--
+<!-- Results -->
 <section class="hero is-small is-light">
   <div class="hero-body">
-    <div class="container">
+    <div class="container is-max-desktop">
       <h2 class="title is-3 has-text-centered" style="margin-bottom:1.5rem;">Results</h2>
-      <div id="results-carousel" class="carousel results-carousel">
-       <div class="item">
-        <img src="static/images/carousel1.jpg" alt="NoPo4D qualitative results on ExoRecon" loading="lazy"/>
-        <h2 class="subtitle has-text-centered">
-          Qualitative results on ExoRecon. NoPo4D achieves 29.15 PSNR feed-forward, outperforming all prior baselines.
-        </h2>
+      <div style="display:flex; align-items:center; gap:0.75rem; max-width:680px; margin:0 auto;">
+        <button id="res-prev" class="qual-arrow-btn" aria-label="Previous scene">&#8592;</button>
+        <div style="flex:1; min-width:0; overflow:hidden;">
+          <div id="res-wrapper">
+            <!-- Dance -->
+            <div class="res-item" style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+              <video autoplay loop muted playsinline style="width:100%;border-radius:6px;"><source src="static/videos/dance4.mp4" type="video/mp4"></video>
+              <video autoplay loop muted playsinline style="width:100%;border-radius:6px;"><source src="static/videos/dance1.mp4" type="video/mp4"></video>
+              <video autoplay loop muted playsinline style="width:100%;border-radius:6px;"><source src="static/videos/dance3.mp4" type="video/mp4"></video>
+              <video autoplay loop muted playsinline style="width:100%;border-radius:6px;"><source src="static/videos/dance2.mp4" type="video/mp4"></video>
+            </div>
+            <!-- Rock climbing -->
+            <div class="res-item" style="display:none;grid-template-columns:1fr 1fr;gap:6px;">
+              <video autoplay loop muted playsinline style="width:100%;border-radius:6px;"><source src="static/videos/ours1.mp4" type="video/mp4"></video>
+              <video autoplay loop muted playsinline style="width:100%;border-radius:6px;"><source src="static/videos/ours2.mp4" type="video/mp4"></video>
+              <video autoplay loop muted playsinline style="width:100%;border-radius:6px;"><source src="static/videos/ours3.mp4" type="video/mp4"></video>
+              <video autoplay loop muted playsinline style="width:100%;border-radius:6px;"><source src="static/videos/ours4.mp4" type="video/mp4"></video>
+            </div>
+            <!-- Cooking -->
+            <div class="res-item" style="display:none;grid-template-columns:1fr 1fr;gap:6px;">
+              <video autoplay loop muted playsinline style="width:100%;border-radius:6px;"><source src="static/videos/cooking1.mp4" type="video/mp4"></video>
+              <video autoplay loop muted playsinline style="width:100%;border-radius:6px;"><source src="static/videos/cooking2.mp4" type="video/mp4"></video>
+              <video autoplay loop muted playsinline style="width:100%;border-radius:6px;"><source src="static/videos/cooking3.mp4" type="video/mp4"></video>
+              <video autoplay loop muted playsinline style="width:100%;border-radius:6px;"><source src="static/videos/cooking4.mp4" type="video/mp4"></video>
+            </div>
+            <!-- Covid -->
+            <div class="res-item" style="display:none;grid-template-columns:1fr 1fr;gap:6px;">
+              <video autoplay loop muted playsinline style="width:100%;border-radius:6px;"><source src="static/videos/covid1.mp4" type="video/mp4"></video>
+              <video autoplay loop muted playsinline style="width:100%;border-radius:6px;"><source src="static/videos/covid2.mp4" type="video/mp4"></video>
+              <video autoplay loop muted playsinline style="width:100%;border-radius:6px;"><source src="static/videos/covid3.mp4" type="video/mp4"></video>
+              <video autoplay loop muted playsinline style="width:100%;border-radius:6px;"><source src="static/videos/covid4.mp4" type="video/mp4"></video>
+            </div>
+          </div>
+        </div>
+        <button id="res-next" class="qual-arrow-btn" aria-label="Next scene">&#8594;</button>
       </div>
-      <div class="item">
-        <img src="static/images/carousel2.jpg" alt="NoPo4D results on Immersive Light Field" loading="lazy"/>
-        <h2 class="subtitle has-text-centered">
-          Out-of-distribution generalization on Immersive Light Field real-world dynamic scenes (21.63 PSNR feed-forward).
-        </h2>
+      <!-- Dots -->
+      <div style="display:flex; justify-content:center; gap:0.4rem; margin-top:0.75rem;">
+        <span class="qual-dot active" data-res-dot="0"></span>
+        <span class="qual-dot" data-res-dot="1"></span>
+        <span class="qual-dot" data-res-dot="2"></span>
+        <span class="qual-dot" data-res-dot="3"></span>
       </div>
-      <div class="item">
-        <img src="static/images/carousel3.jpg" alt="NoPo4D results on Kubric synthetic benchmark" loading="lazy"/>
-        <h2 class="subtitle has-text-centered">
-          Results on the Kubric synthetic benchmark (23.61 PSNR feed-forward, 28.17 PSNR with post-optimization).
-        </h2>
-      </div>
-      <div class="item">
-        <img src="static/images/carousel4.jpg" alt="NoPo4D novel view synthesis on N3DV" loading="lazy"/>
-        <h2 class="subtitle has-text-centered">
-          Novel view synthesis on N3DV: NoPo4D generalizes to moderate (5.7°–27.7°) and extreme (34.6°–71.9°) viewpoint changes.
-        </h2>
-      </div>
+    </div>
   </div>
-</div>
-</div>
 </section>
--->
-<!-- End image carousel -->
+<script>
+(function() {
+  const items = document.querySelectorAll('.res-item');
+  const dots  = document.querySelectorAll('[data-res-dot]');
+  let current = 0;
+  function show(idx) {
+    items[current].style.display = 'none';
+    current = (idx + items.length) % items.length;
+    items[current].style.display = 'grid';
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+  }
+  document.getElementById('res-prev').addEventListener('click', () => show(current - 1));
+  document.getElementById('res-next').addEventListener('click', () => show(current + 1));
+  dots.forEach(d => d.addEventListener('click', () => show(+d.dataset.resDot)));
+})();
+</script>
+<!-- End Results -->
 
 <!-- Interactive Viewer -->
 <section class="section" style="background:#f5f5f5;">
