@@ -504,7 +504,7 @@
       img.src = images[dataset][img.dataset.baseline];
     });
     document.getElementById('qual-caption').innerHTML = captions[dataset];
-    document.querySelectorAll('.qual-dot').forEach((d, i) => d.classList.toggle('active', i === currentIndex));
+    document.querySelectorAll('.qual-dot[data-index]').forEach((d, i) => d.classList.toggle('active', i === currentIndex));
     document.querySelectorAll('img-comparison-slider').forEach(s => { s.setAttribute('value', '50'); });
     requestAnimationFrame(lockBoxHeights);
   }
@@ -535,7 +535,7 @@
     currentIndex = (currentIndex + 1) % datasets.length;
     slideToScene(1);
   });
-  document.querySelectorAll('.qual-dot').forEach(dot => {
+  document.querySelectorAll('.qual-dot[data-index]').forEach(dot => {
     dot.addEventListener('click', () => {
       const newIndex = parseInt(dot.dataset.index);
       if (newIndex === currentIndex) return;
