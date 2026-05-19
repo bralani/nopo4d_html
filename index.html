@@ -223,7 +223,7 @@
   <div class="container is-max-desktop">
 
     <div class="columns is-centered" style="margin-bottom:1rem;">
-      <div class="column is-four-fifths">
+      <div class="column">
         <div style="background: linear-gradient(135deg, #eff6ff 0%, #f0ebff 100%); border-radius:14px; box-shadow:0 2px 12px rgba(0,0,0,0.18); padding:0.9rem 1.5rem; text-align:center; border: 1px solid #c7d2fe;">
           <p style="font-size: 0.92rem; line-height: 1.75; margin:0;">
             <strong>TL;DR:</strong> NoPo4D jointly reconstructs <strong>moving scenes</strong> from <strong>multiple uncalibrated video streams</strong> in a <strong>single step</strong>, orders of magnitude faster than traditional optimization-based approaches.
@@ -233,7 +233,7 @@
     </div>
 
     <div class="columns is-centered">
-      <div class="column is-four-fifths">
+      <div class="column">
         <video poster="" autoplay controls muted loop width="100%" preload="metadata" style="border-radius:8px;">
           <source src="static/videos/teaser.mp4" type="video/mp4">
         </video>
@@ -249,31 +249,27 @@
   <div class="container is-max-desktop">
 
     <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
+      <div class="column">
         <h2 class="title is-3">Overview</h2>
-        <div class="content" style="font-size:0.92rem; color:#374151; text-align:left;">
-          <p>
-            Recent feed-forward 3D Gaussian splatting methods have made dramatic progress, but no existing approach jointly addresses dynamic scenes, multi-view input, and unknown camera poses in a single pass. Methods that handle dynamics require accurate camera poses or monocular input; pose-free methods address only static scenes; and per-scene optimization bridges some gaps but at a cost of minutes to hours per scene.
-          </p>
-          <p>
-            We introduce <strong>NoPo4D</strong>, the first <strong>feed-forward system</strong> that addresses this gap. Built on a pretrained geometry backbone, NoPo4D introduces a velocity decomposition that splits Gaussian motion into per-pixel image-plane shifts and depth changes, enabling direct supervision from pseudo ground-truth optical flow — without requiring camera poses or 3D motion ground truth. A bidirectional motion encoder aggregates cross-view and cross-frame features, while view-dependent opacity mitigates geometric misalignments inherent to pose-free reconstruction.
-          </p>
-          <p>
-            On four multi-view dynamic benchmarks, <strong>NoPo4D</strong> consistently outperforms prior feed-forward baselines, and with an optional post-optimization stage surpasses per-scene optimization methods while running <strong>orders of magnitude faster</strong>.
-          </p>
-        </div>
       </div>
     </div>
 
-    <div class="columns is-centered" style="margin-top:2rem;">
-      <div class="column is-four-fifths">
+    <div class="columns is-centered" style="margin-top:-1rem;">
+      <div class="column">
         <div style="background:#fff; border-radius:14px; box-shadow:0 2px 12px rgba(0,0,0,0.18); padding:1.5rem; border:1px solid #e0e7ff;">
           <figure style="margin:0;">
-            <img src="static/images/architecture.svg" alt="NoPo4D architecture overview" style="width:85%; max-width:750px; display:block; margin:0 auto;">
-            <figcaption style="margin-top:1rem; max-width:750px; margin-left:auto; margin-right:auto; font-size:0.82rem; color:#374151; text-align:center; line-height:1.4;">
-              <strong>Architecture overview.</strong> Given <em>C</em> streams of time-synchronized video, DA3 first extracts multi-view features through alternating within-view and cross-view attention layers. Pretrained, frozen depth and camera heads recover per-frame geometry, unprojected into Gaussian means <strong>μ</strong>. Two trainable heads then decode the remaining attributes: a Gaussian head predicts static parameters (<strong>R</strong>, <strong>s</strong>, α, <strong>c</strong>), while a bidirectional motion branch processes consecutive-frame features to produce forward and backward linear and angular velocities (<strong>v</strong><sup>±</sup>, <strong>ω</strong><sup>±</sup>), a per-pixel motion gate ρ, and the temporal covariance σ<sub>g</sub>. All outputs are composed into a 4D Gaussian representation and rendered via differentiable rasterization.
-            </figcaption>
+            <img src="static/images/architecture.svg" alt="NoPo4D architecture overview" style="width:85%; max-width:750px; display:block; margin:0 auto; cursor:zoom-in;" onclick="document.getElementById('arch-lightbox').style.display='flex';">
           </figure>
+          <div class="content" style="font-size:1rem; color:#374151; text-align:left; margin-top:1.25rem;">
+            <p>
+              A pretrained backbone (DA3) encodes multi-view frames; frozen depth and camera heads predict per-frame depth and poses, which are unprojected into 3D Gaussian positions, while a <strong>Gaussian head</strong> decodes static attributes and a <strong>motion encoder</strong> decodes dynamics. This design enables three key advantages:
+            </p>
+            <ul>
+              <li><strong>Pose-free dynamic reconstruction.</strong> Gaussian motion is decomposed into 2D image-plane shifts and depth change, supervised directly from pseudo ground-truth optical flow (no camera calibration or 3D motion labels needed).</li>
+              <li><strong>Bidirectional motion modeling.</strong> A cross-view, cross-frame encoder predicts asymmetric forward and backward velocities, capturing complex scene dynamics.</li>
+              <li><strong>View-dependent opacity.</strong> SH opacity coefficients suppress unreliable Gaussians from misaligned viewpoints, improving multi-view consistency.</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -322,20 +318,17 @@
 <!-- End image carousel -->
 
 <!-- Interactive Viewer -->
-<!--
-<section class="section">
+<section class="section" style="background:#f5f5f5;">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
-      <div class="column is-full">
-        <h2 class="title is-3">Interactive Viewer</h2>
-        <div class="content">
-          <p style="font-size:0.88rem; color:#64748b;">Click and drag to orbit &middot; scroll to zoom &middot; click a scene below to switch.</p>
-        </div>
+      <div class="column">
+        <h2 class="title is-3">Interactive 4D Viewer</h2>
+<p style="font-size:0.82rem; color:#94a3b8; margin-bottom:1rem;"><em>&#9432; To enable real-time rendering in the browser, scenes are reconstructed from 1 camera and 2 frames. Quantitative results in the paper are obtained with the full multi-camera, multi-frame setting.</em></p>
         <iframe
           src="./demo/"
           width="100%"
-          height="720"
-          style="border:none; border-radius:8px; box-shadow:0 4px 24px rgba(0,0,0,0.15);"
+          height="620"
+          style="border:none; border-radius:8px; box-shadow:0 4px 24px rgba(0,0,0,0.15); display:block;"
           allowfullscreen
           title="4D Gaussian Splatting Interactive Viewer">
         </iframe>
@@ -343,14 +336,13 @@
     </div>
   </div>
 </section>
--->
 <!-- End interactive viewer -->
 
 
 
 
 <!-- Qualitative results -->
-<section id="qual-section" class="section hero is-light">
+<section id="qual-section" class="section">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-full">
@@ -562,6 +554,11 @@
 <!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
 
     <!-- End of Statcounter Code -->
+
+  <!-- Architecture lightbox -->
+  <div id="arch-lightbox" onclick="this.style.display='none';" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:9999; align-items:center; justify-content:center; cursor:zoom-out;">
+    <img src="static/images/architecture.svg" alt="NoPo4D architecture overview" style="max-width:95vw; max-height:95vh; border-radius:8px; box-shadow:0 8px 40px rgba(0,0,0,0.6); background:#fff; padding:1.5rem;">
+  </div>
 
   </body>
   </html>
