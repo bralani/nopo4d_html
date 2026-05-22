@@ -359,7 +359,8 @@
         <h2 class="title is-3">Interactive 4D Viewer</h2>
 <p style="font-size:0.82rem; color:#94a3b8; margin-bottom:1rem;"><em>&#9432; To enable real-time rendering in the browser, scenes are reconstructed from 1 camera and 2 frames. Quantitative results in the paper are obtained with the full multi-camera, multi-frame setting.</em></p>
         <iframe
-          src="./demo/"
+          id="viewer-iframe"
+          data-src="./demo/"
           width="100%"
           height="620"
           style="border:none; border-radius:8px; box-shadow:0 4px 24px rgba(0,0,0,0.15); display:block;"
@@ -370,6 +371,18 @@
     </div>
   </div>
 </section>
+<script>
+(function() {
+  var iframe = document.getElementById('viewer-iframe');
+  var observer = new IntersectionObserver(function(entries) {
+    if (entries[0].isIntersecting) {
+      iframe.src = iframe.dataset.src;
+      observer.disconnect();
+    }
+  }, { rootMargin: '300px' });
+  observer.observe(iframe);
+})();
+</script>
 <!-- End interactive viewer -->
 
 
