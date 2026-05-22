@@ -6,18 +6,19 @@
   
   <!-- Primary Meta Tags -->
   <meta name="title" content="NoPo4D: Feed-Forward Dynamic Gaussians from Unposed Multi-View Videos">
-  <meta name="description" content="NoPo4D: the first feed-forward system for dynamic 3D Gaussian splatting from unposed multi-view videos, surpassing per-scene optimization at orders-of-magnitude faster speed.">
+  <meta name="description" content="NoPo4D: feed-forward dynamic 3D Gaussian splatting from unposed multi-view videos, surpassing per-scene optimization at orders-of-magnitude faster speed.">
   <meta name="keywords" content="4D Gaussian splatting, novel view synthesis, dynamic scenes, pose-free reconstruction, multi-view video, feed-forward inference, 3D reconstruction">
   <meta name="author" content="Matteo Balice, Yanik Künzi, Chenyangguang Zhang, Matteo Matteucci, Marc Pollefeys, Sungwhan Hong">
   <meta name="robots" content="index, follow">
   <meta name="language" content="English">
+  <link rel="canonical" href="https://bralani.github.io/nopo4d_html/" />
   
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="ETH Zürich / Politecnico di Milano">
   <meta property="og:title" content="NoPo4D: Feed-Forward Dynamic Gaussians from Unposed Multi-View Videos">
-  <meta property="og:description" content="NoPo4D: the first feed-forward system for dynamic 3D Gaussian splatting from unposed multi-view videos, surpassing per-scene optimization at orders-of-magnitude faster speed.">
-  <meta property="og:url" content="#">
+  <meta property="og:description" content="NoPo4D: feed-forward dynamic 3D Gaussian splatting from unposed multi-view videos, surpassing per-scene optimization at orders-of-magnitude faster speed.">
+  <meta property="og:url" content="https://bralani.github.io/nopo4d_html/">
   <meta property="og:image" content="static/images/social_preview.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -31,7 +32,7 @@
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="NoPo4D: Feed-Forward Dynamic Gaussians from Unposed Multi-View Videos">
-  <meta name="twitter:description" content="NoPo4D: the first feed-forward system for dynamic 3D Gaussian splatting from unposed multi-view videos, surpassing per-scene optimization at orders-of-magnitude faster speed.">
+  <meta name="twitter:description" content="NoPo4D: feed-forward dynamic 3D Gaussian splatting from unposed multi-view videos, surpassing per-scene optimization at orders-of-magnitude faster speed.">
   <meta name="twitter:image" content="static/images/social_preview.png">
   <meta name="twitter:image:alt" content="NoPo4D - Research Preview">
 
@@ -141,6 +142,7 @@
     "datePublished": "2026-01-01",
     "keywords": ["4D Gaussian splatting", "novel view synthesis", "dynamic scenes", "pose-free reconstruction", "multi-view video", "feed-forward inference"],
     "abstract": "Recent feed-forward 3D gaussian splatting methods have made dramatic progress on individual aspects of 3D scene reconstruction, but no existing method jointly addresses dynamic content, multi-view input, and unknown camera poses in a single feed-forward pass. We introduce NoPo4D, the first feed-forward system that addresses this empty quadrant.",
+    "url": "https://bralani.github.io/nopo4d_html/",
     "isAccessibleForFree": true,
     "license": "https://creativecommons.org/licenses/by/4.0/",
     "about": [
@@ -259,7 +261,7 @@
       <div class="column">
         <div style="background:#fff; border-radius:14px; box-shadow:0 2px 12px rgba(0,0,0,0.18); padding:1.5rem; border:1px solid #e0e7ff;">
           <figure style="margin:0;">
-            <img src="static/images/architecture.png" alt="NoPo4D architecture overview" style="width:85%; max-width:750px; display:block; margin:0 auto; cursor:zoom-in;" onclick="document.getElementById('arch-lightbox').style.display='flex';">
+            <img src="static/images/architecture.png" alt="NoPo4D Neural Architecture for Feed-Forward 4D Dynamic Gaussian Splatting" style="width:85%; max-width:750px; display:block; margin:0 auto; cursor:zoom-in;" onclick="document.getElementById('arch-lightbox').style.display='flex';">
           </figure>
           <div class="content" style="font-size:1rem; color:#374151; text-align:left; margin-top:1.25rem;">
             <p>
@@ -291,31 +293,31 @@
           <div id="res-wrapper">
             <!-- Dance -->
             <div class="res-item" style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
-              <video autoplay loop muted playsinline style="width:100%;border-radius:6px;"><source src="static/videos/dance4.mp4" type="video/mp4"></video>
-              <video autoplay loop muted playsinline style="width:100%;border-radius:6px;"><source src="static/videos/dance1.mp4" type="video/mp4"></video>
-              <video autoplay loop muted playsinline style="width:100%;border-radius:6px;"><source src="static/videos/dance3.mp4" type="video/mp4"></video>
-              <video autoplay loop muted playsinline style="width:100%;border-radius:6px;"><source src="static/videos/dance2.mp4" type="video/mp4"></video>
+              <video autoplay loop muted playsinline title="Dance scene — NoPo4D 4D reconstruction (view 1)" style="width:100%;border-radius:6px;"><source src="static/videos/dance4.mp4" type="video/mp4"></video>
+              <video autoplay loop muted playsinline title="Dance scene — NoPo4D 4D reconstruction (view 2)" style="width:100%;border-radius:6px;"><source src="static/videos/dance1.mp4" type="video/mp4"></video>
+              <video autoplay loop muted playsinline title="Dance scene — NoPo4D 4D reconstruction (view 3)" style="width:100%;border-radius:6px;"><source src="static/videos/dance3.mp4" type="video/mp4"></video>
+              <video autoplay loop muted playsinline title="Dance scene — NoPo4D 4D reconstruction (view 4)" style="width:100%;border-radius:6px;"><source src="static/videos/dance2.mp4" type="video/mp4"></video>
             </div>
             <!-- Rock climbing -->
             <div class="res-item" style="display:none;grid-template-columns:1fr 1fr;gap:6px;">
-              <video autoplay loop muted playsinline style="width:100%;border-radius:6px;"><source src="static/videos/ours1.mp4" type="video/mp4"></video>
-              <video autoplay loop muted playsinline style="width:100%;border-radius:6px;"><source src="static/videos/ours2.mp4" type="video/mp4"></video>
-              <video autoplay loop muted playsinline style="width:100%;border-radius:6px;"><source src="static/videos/ours3.mp4" type="video/mp4"></video>
-              <video autoplay loop muted playsinline style="width:100%;border-radius:6px;"><source src="static/videos/ours4.mp4" type="video/mp4"></video>
+              <video autoplay loop muted playsinline title="Rock climbing scene — NoPo4D 4D reconstruction (view 1)" style="width:100%;border-radius:6px;"><source src="static/videos/ours1.mp4" type="video/mp4"></video>
+              <video autoplay loop muted playsinline title="Rock climbing scene — NoPo4D 4D reconstruction (view 2)" style="width:100%;border-radius:6px;"><source src="static/videos/ours2.mp4" type="video/mp4"></video>
+              <video autoplay loop muted playsinline title="Rock climbing scene — NoPo4D 4D reconstruction (view 3)" style="width:100%;border-radius:6px;"><source src="static/videos/ours3.mp4" type="video/mp4"></video>
+              <video autoplay loop muted playsinline title="Rock climbing scene — NoPo4D 4D reconstruction (view 4)" style="width:100%;border-radius:6px;"><source src="static/videos/ours4.mp4" type="video/mp4"></video>
             </div>
             <!-- Cooking -->
             <div class="res-item" style="display:none;grid-template-columns:1fr 1fr;gap:6px;">
-              <video autoplay loop muted playsinline style="width:100%;border-radius:6px;"><source src="static/videos/cooking1.mp4" type="video/mp4"></video>
-              <video autoplay loop muted playsinline style="width:100%;border-radius:6px;"><source src="static/videos/cooking2.mp4" type="video/mp4"></video>
-              <video autoplay loop muted playsinline style="width:100%;border-radius:6px;"><source src="static/videos/cooking3.mp4" type="video/mp4"></video>
-              <video autoplay loop muted playsinline style="width:100%;border-radius:6px;"><source src="static/videos/cooking4.mp4" type="video/mp4"></video>
+              <video autoplay loop muted playsinline title="Cooking scene — NoPo4D 4D reconstruction (view 1)" style="width:100%;border-radius:6px;"><source src="static/videos/cooking1.mp4" type="video/mp4"></video>
+              <video autoplay loop muted playsinline title="Cooking scene — NoPo4D 4D reconstruction (view 2)" style="width:100%;border-radius:6px;"><source src="static/videos/cooking2.mp4" type="video/mp4"></video>
+              <video autoplay loop muted playsinline title="Cooking scene — NoPo4D 4D reconstruction (view 3)" style="width:100%;border-radius:6px;"><source src="static/videos/cooking3.mp4" type="video/mp4"></video>
+              <video autoplay loop muted playsinline title="Cooking scene — NoPo4D 4D reconstruction (view 4)" style="width:100%;border-radius:6px;"><source src="static/videos/cooking4.mp4" type="video/mp4"></video>
             </div>
             <!-- Covid -->
             <div class="res-item" style="display:none;grid-template-columns:1fr 1fr;gap:6px;">
-              <video autoplay loop muted playsinline style="width:100%;border-radius:6px;"><source src="static/videos/covid1.mp4" type="video/mp4"></video>
-              <video autoplay loop muted playsinline style="width:100%;border-radius:6px;"><source src="static/videos/covid2.mp4" type="video/mp4"></video>
-              <video autoplay loop muted playsinline style="width:100%;border-radius:6px;"><source src="static/videos/covid3.mp4" type="video/mp4"></video>
-              <video autoplay loop muted playsinline style="width:100%;border-radius:6px;"><source src="static/videos/covid4.mp4" type="video/mp4"></video>
+              <video autoplay loop muted playsinline title="Covid scene — NoPo4D 4D reconstruction (view 1)" style="width:100%;border-radius:6px;"><source src="static/videos/covid1.mp4" type="video/mp4"></video>
+              <video autoplay loop muted playsinline title="Covid scene — NoPo4D 4D reconstruction (view 2)" style="width:100%;border-radius:6px;"><source src="static/videos/covid2.mp4" type="video/mp4"></video>
+              <video autoplay loop muted playsinline title="Covid scene — NoPo4D 4D reconstruction (view 3)" style="width:100%;border-radius:6px;"><source src="static/videos/covid3.mp4" type="video/mp4"></video>
+              <video autoplay loop muted playsinline title="Covid scene — NoPo4D 4D reconstruction (view 4)" style="width:100%;border-radius:6px;"><source src="static/videos/covid4.mp4" type="video/mp4"></video>
             </div>
           </div>
         </div>

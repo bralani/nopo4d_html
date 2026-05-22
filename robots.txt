@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://bralani.github.io/nopo4d_html/sitemap.xml
